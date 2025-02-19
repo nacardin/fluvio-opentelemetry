@@ -1,0 +1,15 @@
+[package]
+name = "fluvio-opentelemetry"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+opentelemetry_sdk = { version = "*", features = ["trace", "testing"] }
+fluvio = "0.25"
+futures-util = "0.3"
+
+[dev-dependencies]
+opentelemetry = "0.28"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+tracing-opentelemetry = "0.29"
