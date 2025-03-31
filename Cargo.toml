@@ -4,12 +4,15 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-opentelemetry_sdk = { version = "*", features = ["trace", "testing"] }
+opentelemetry_sdk = { version = "0.28", features = ["trace", "testing"] }
+opentelemetry = "0.28"
 fluvio = "0.25"
 futures-util = "0.3"
+opentelemetry-types = { git = "https://github.com/infinyon/opentelemetry-types.git", rev = "caa72d01413903cd6f8d2662eb2cd80485c3794c" }
+anyhow = "1.0"
+fluvio-future = "0.7"
 
 [dev-dependencies]
-opentelemetry = "0.28"
 tracing = "0.1"
 tracing-subscriber = "0.3"
 tracing-opentelemetry = "0.29"

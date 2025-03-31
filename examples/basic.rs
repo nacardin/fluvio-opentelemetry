@@ -7,11 +7,12 @@ use tracing_subscriber::Registry;
 use fluvio_opentelemetry::FluvioExporter;
 
 fn main() {
-    let span_exporter = FluvioExporter;
+    let topic = "otel-traces".to_string();
+    let span_exporter = FluvioExporter::create(&topic).unwrap();
 
     // Create a new OpenTelemetry trace pipeline that prints to stdout
     let provider = SdkTracerProvider::builder()
-        .with_simple_exporter(span_exporter.clone())
+        .with_simple_exporter(span_exporter)
         .build();
     let tracer = provider.tracer("readme_example");
 
@@ -30,6 +31,9 @@ fn main() {
 
         error!("This event will be logged in the root span.");
 
-        info!(attr1 = "value1", attr2 = "value2", "event1")
+        // loop {
+        info!(attr1 = "value1", attr2 = "value2", "event1");
+        // std::thread::sleep(std::time::Duration::from_secs(1));
+        // }
     });
 }
